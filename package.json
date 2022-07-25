@@ -5,7 +5,9 @@
     "description": "",
     "main": "src/index.js",
     "scripts": {
-        "test": "dotenv -e .env.test prisma migrate dev && cross-env NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i"
+        "build": "tsc",
+        "test": "dotenv -e .env.test prisma migrate dev && cross-env NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
+        "start": "node dist/index.js"
     },
     "prisma": {
         "seed": "ts-node prisma/seed.ts"
