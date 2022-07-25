@@ -26,5 +26,5 @@ export async function insertTest(req: Request, res: Response) {
         category,
         teacherDiscipline.id
     );
-    res.send(test);
+    res.status(201).send(test);
 }

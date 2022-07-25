@@ -12,8 +12,4 @@ app.use(cors());
 app.use(router);
 app.use(handlerError);
 
-app.listen(process.env.PORT || 4000, () => {
-    console.log("Server online");
-});
-
 export default app;

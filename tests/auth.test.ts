@@ -37,7 +37,7 @@ describe("POST /signin", () => {
         await createUser("yv@email.com", "123");
         const body = { email: "yv@email.com", password: "123" };
         const Login = await supertest(app).post("/signin").send(body);
-        expect(Login.status).toEqual(200);
+        expect(Login.body).not.toBeNull();
     });
 
     it("Senha incorreta", async () => {
@@ -48,7 +48,7 @@ describe("POST /signin", () => {
     });
 
     it("Email inexistente", async () => {
-        const body = { email: "yv@email.com", password: "123" };
+        const body = { email: "yv2@email.com", password: "123" };
         const tryLogin = await supertest(app).post("/signin").send(body);
         expect(tryLogin.status).toEqual(404);
     });
