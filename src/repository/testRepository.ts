@@ -16,6 +16,23 @@ async function findAllByDiscipline() {
     });
 }
 
+async function findAllByTeacher() {
+    return await prisma.teacher.findMany({
+        include: {
+            TeacherDiscipline: {
+                include: {
+                    Test: {
+                        include: {
+                            category: true,
+                        },
+                    },
+                },
+            },
+        },
+    });
+}
+
 export default {
     findAllByDiscipline,
+    findAllByTeacher,
 };

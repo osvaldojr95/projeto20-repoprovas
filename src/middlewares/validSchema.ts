@@ -3,7 +3,6 @@ import { Request, Response, NextFunction } from "express";
 
 export default function validSchema(schema) {
     return async (req: Request, res: Response, next: NextFunction) => {
-        console.log(req.body);
         const schemaBody = {};
         for (const key in req.body) {
             if (typeof schemaBody[key] === "string") {
