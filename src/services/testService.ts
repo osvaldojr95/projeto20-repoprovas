@@ -1,3 +1,4 @@
+import { CreateTestData } from "../interfaces/testInterface.js";
 import testRepository from "../repository/testRepository.js";
 
 async function getByDiscipline() {
@@ -68,7 +69,24 @@ async function getByTeacher() {
     return { teachers: obj };
 }
 
+async function insertTest(
+    name: string,
+    pdfUrl: string,
+    categoryId: number,
+    teacherDisciplineId: number
+) {
+    const test: CreateTestData = {
+        name,
+        pdfUrl,
+        categoryId,
+        teacherDisciplineId,
+    };
+
+    return await testRepository.insert(test);
+}
+
 export default {
     getByDiscipline,
     getByTeacher,
+    insertTest,
 };

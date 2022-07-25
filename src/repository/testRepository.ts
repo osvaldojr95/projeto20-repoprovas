@@ -1,3 +1,4 @@
+import { CreateTestData } from "../interfaces/testInterface.js";
 import { prisma } from "./../config/database.js";
 
 async function findAllByDiscipline() {
@@ -32,7 +33,14 @@ async function findAllByTeacher() {
     });
 }
 
+async function insert(createTestData: CreateTestData) {
+    return await prisma.test.create({
+        data: createTestData,
+    });
+}
+
 export default {
     findAllByDiscipline,
     findAllByTeacher,
+    insert,
 };
